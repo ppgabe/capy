@@ -58,6 +58,7 @@ public class BoyerMooreStringSearch {
         }
     }
 
+    // WIP: Need to fix return type to make it usable
     public void search(String text) {
         int patternLength = pattern.length();
         int textLength = text.length();
@@ -72,6 +73,7 @@ public class BoyerMooreStringSearch {
             }
 
             if (pos < 0) {
+                // WIP: Right now it's just printing the matches!!!
                 System.out.println("Match found at index " + shiftDistance);
 
                 // Shift to find the next possible occurrence in the text
