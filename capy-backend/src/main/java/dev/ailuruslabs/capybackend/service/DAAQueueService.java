@@ -9,6 +9,8 @@ import dev.ailuruslabs.capybackend.domain.UserProfile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -35,9 +37,14 @@ public class DAAQueueService implements QueueService {
 
     @Scheduled(fixedRate = 15000)
     public Set<MatchPair> processEpoch() {
-        var processingPool = List.copyOf(waitingPool);
+        List<UserProfile> processingPool = new ArrayList<>();
+        Iterator<UserProfile> iterator = waitingPool.iterator();
 
-        waitingPool.clear();
+        // Safely transfer all UserProfiles in the queue
+        while (iterator.hasNext()) {
+            processingPool.add(iterator.next());
+            iterator.remove();
+        }
 
         var scoredUsers = scoringEngine.scorePool(processingPool);
         var matchResult = matchingEngine.calculateMatches(scoredUsers);
