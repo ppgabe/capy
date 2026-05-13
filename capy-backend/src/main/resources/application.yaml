@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: capy-backend
+  threads:
+    virtual:
+      enabled: true
