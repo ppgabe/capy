@@ -7,13 +7,6 @@
         <option value="$PROJECT_DIR$/capy-backend/pom.xml" />
       </list>
     </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/capy-backend/pom.xml" />
-      </set>
-    </option>
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="temurin-26 (2)" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/out" />
-  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="temurin-26" project-jdk-type="JavaSDK" />
 </project>

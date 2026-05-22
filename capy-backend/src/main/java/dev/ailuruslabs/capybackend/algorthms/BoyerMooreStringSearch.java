@@ -58,8 +58,7 @@ public class BoyerMooreStringSearch {
         }
     }
 
-    // WIP: Need to fix return type to make it usable
-    public void search(String text) {
+    public boolean search(String text) {
         int patternLength = pattern.length();
         int textLength = text.length();
         int shiftDistance = 0;
@@ -73,11 +72,7 @@ public class BoyerMooreStringSearch {
             }
 
             if (pos < 0) {
-                // WIP: Right now it's just printing the matches!!!
-                System.out.println("Match found at index " + shiftDistance);
-
-                // Shift to find the next possible occurrence in the text
-                shiftDistance += shiftArray[0];
+                return true; // Early return after finding a match
             } else {
                 // A mismatch occurred
                 char badCharInText = text.charAt(shiftDistance + pos);
@@ -94,5 +89,7 @@ public class BoyerMooreStringSearch {
                 shiftDistance += Math.max(1, Math.max(badCharShift, goodSuffixShift));
             }
         }
+
+        return false;
     }
 }

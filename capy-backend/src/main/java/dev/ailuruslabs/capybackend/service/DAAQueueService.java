@@ -1,11 +1,12 @@
 package dev.ailuruslabs.capybackend.service;
 
-import com.fasterxml.jackson.databind.deser.DataFormatReaders;
 import dev.ailuruslabs.capybackend.application.MatchingEngine;
 import dev.ailuruslabs.capybackend.application.QueueService;
 import dev.ailuruslabs.capybackend.application.ScoringEngine;
 import dev.ailuruslabs.capybackend.domain.MatchPair;
 import dev.ailuruslabs.capybackend.domain.UserProfile;
+import lombok.RequiredArgsConstructor;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -16,16 +17,13 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
+@RequiredArgsConstructor
 public class DAAQueueService implements QueueService {
     private final Set<UserProfile> waitingPool = ConcurrentHashMap.newKeySet();
 
     private final ScoringEngine scoringEngine;
     private final MatchingEngine matchingEngine;
-
-    public DAAQueueService(ScoringEngine scoringEngine, MatchingEngine matchingEngine) {
-        this.scoringEngine = scoringEngine;
-        this.matchingEngine = matchingEngine;
-    }
+    private final SimpMessagingTemplate messagingTemplate;
 
     public void addUserToQueue(UserProfile profile) {
         waitingPool.add(profile);
@@ -36,7 +34,7 @@ public class DAAQueueService implements QueueService {
     }
 
     @Scheduled(fixedRate = 15000)
-    public Set<MatchPair> processEpoch() {
+    public void processEpoch() {
         List<UserProfile> processingPool = new ArrayList<>();
         Iterator<UserProfile> iterator = waitingPool.iterator();
 
@@ -47,10 +45,14 @@ public class DAAQueueService implements QueueService {
         }
 
         var scoredUsers = scoringEngine.scorePool(processingPool);
-        var matchResult = matchingEngine.calculateMatches(scoredUsers);
+        var matchResult = matchingEngine.calculateMatches(scoredUsers, processingPool);
 
         waitingPool.addAll(matchResult.unmatchedUsers());
 
-        return matchResult.optimalMatches();
+        for (MatchPair pair : matchResult.optimalMatches()) {
+            messagingTemplate.convertAndSend("/queue/match/" + pair.userA().id(), pair);
+
+            messagingTemplate.convertAndSend("/queue/match/" + pair.userB().id(), pair);
+        }
     }
 }

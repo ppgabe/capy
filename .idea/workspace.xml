@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4e230161-85ff-4914-84f7-539c972d1320" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/capy.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/configuration/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/configuration/WebSocketConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/controller/ChatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/controller/MatchmakingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/domain/ChatMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/capy-backend/src/test/java/dev/ailuruslabs/capybackend/service/DAAMatchingServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/capy-backend/src/test/java/dev/ailuruslabs/capybackend/service/DAAScoringServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/algorthms/BoyerMooreStringSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/algorthms/BoyerMooreStringSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/application/MatchingEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/application/MatchingEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/application/QueueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/application/QueueService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/application/ScoringEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/application/ScoringEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/domain/MatchPair.java" beforeDir="false" afterPath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/domain/MatchPair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/service/DAAMatchingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/service/DAAMatchingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/service/DAAQueueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/service/DAAQueueService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/service/DAAScoringService.java" beforeDir="false" afterPath="$PROJECT_DIR$/capy-backend/src/main/java/dev/ailuruslabs/capybackend/service/DAAScoringService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capy.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotChats">
+    <option name="panelChat">
+      <chat>
+        <option name="activeSessionId" value="65c82d11-e52c-4418-99f0-cdd5ec2e7ae5" />
+        <option name="sessions">
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="65c82d11-e52c-4418-99f0-cdd5ec2e7ae5" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+        </option>
+        <option name="type" value="PANEL" />
+      </chat>
+    </option>
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Users/ppgabe/IdeaProjects/capy" value="3E3cbe6hLkjnNzIR8wwufUehcfH" />
+    </persistenceIdMap>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Spring REST Controller" />
+        <option value="Spring Configuration" />
+        <option value="Record" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="3E3cbe6hLkjnNzIR8wwufUehcfH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.CapyBackendApplicationTests.executor": "Run",
+    "JUnit.DAAMatchingServiceTest.executor": "Run",
+    "JUnit.DAAScoringServiceTest.executor": "Run",
+    "Maven.capy-backend [test].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.CapyBackendApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn test" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="CapyBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="capy-backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="dev.ailuruslabs.capybackend.CapyBackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4e230161-85ff-4914-84f7-539c972d1320" name="Changes" comment="" />
+      <created>1779410766545</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1779410766545</updated>
+      <workItem from="1779410768619" duration="5403000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>
