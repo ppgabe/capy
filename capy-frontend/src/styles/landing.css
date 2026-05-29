@@ -1,0 +1,93 @@
+/* Landing page layout + components (kept separate from global tokens/reset) */
+
+.site-header {
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--capy-sand);
+}
+
+.nav-shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-inline: 0.25rem;
+  text-decoration: none;
+}
+
+.nav-links-container {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: var(--savanna-mist);
+}
+
+.brand__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--mudbank);
+  object-fit: cover;
+}
+
+.brand__text {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+  font-size: 1.35rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__link {
+  font-size: var(--text-sm);
+  color: var(--burrow-brown);
+  padding: 0.5rem 0.7rem;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+  color: var(--burrow-brown);
+  background: var(--riverbank-cream);
+  padding: 0.3rem 0.7rem;
+}
+
+.nav__link--active {
+  background: var(--riverbank-cream);
+  color: var(--burrow-brown);
+}
+
+.landing {
+  padding-bottom: var(--space-5);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+}

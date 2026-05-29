@@ -1,0 +1,113 @@
+/* Skill Card Styles */
+
+.skill-card {
+  background: #fdf8f2;
+  border: 1px solid #8b6f47;
+  border-radius: 1.3rem;
+  padding: var(--space-4);
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.skill-card-title {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.05em;
+  text-align: left;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+  align-items: center;
+}
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background-color: var(--capy-sand);
+  color: white;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.skill-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.skill-tag-remove {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  transition: all 0.2s ease;
+}
+
+.skill-tag-remove:hover {
+  transform: scale(1.2);
+}
+
+.skill-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #8b6f47;
+  background: transparent;
+  color: #8b6f47;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.skill-add-btn:hover {
+  background: rgba(139, 111, 71, 0.1);
+  transform: scale(1.1);
+}
+
+.skill-input {
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 2px solid #8b6f47;
+  background: white;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  outline: none;
+  transition: all 0.25s ease;
+  min-width: 120px;
+}
+
+.skill-input:focus {
+  box-shadow: 0 0 0 3px rgba(139, 111, 71, 0.2);
+}
+
+.skill-input::placeholder {
+  color: rgba(59, 42, 20, 0.5);
+}
