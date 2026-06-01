@@ -1,6 +1,7 @@
 package dev.ailuruslabs.capybackend.controller;
 
 import dev.ailuruslabs.capybackend.domain.ChatMessage;
+import dev.ailuruslabs.capybackend.service.DemoChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -15,6 +16,7 @@ import java.time.Instant;
 class ChatController {
 
     private final SimpMessagingTemplate messagingTemplate;
+    private final DemoChatService demoChatService;
 
     @MessageMapping("/chat/{matchId}")
     public void routeMessage(@DestinationVariable String matchId, @Payload ChatMessage message) {
@@ -27,5 +29,7 @@ class ChatController {
 
         // Broadcast the message to anyone subscribed to this specific match's chat room
         messagingTemplate.convertAndSend("/topic/chat/" + matchId, stampedMessage);
+
+        demoChatService.handleIncoming(matchId, stampedMessage);
     }
 }

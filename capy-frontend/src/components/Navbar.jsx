@@ -20,13 +20,8 @@ export default function Navbar() {
             <nav className="nav" aria-label="Primary">
               <ul className="nav__list" role="list">
                 <li>
-                  <NavLink className={({ isActive }) => `nav__link ${isActive ? 'nav__link--active' : ''}`} to="/register">
-                    Register
-                  </NavLink>
-                </li>
-                <li>
                   <NavLink className={({ isActive }) => `nav__link ${isActive ? 'nav__link--active' : ''}`} to="/login">
-                    Login
+                    Register/Login
                   </NavLink>
                 </li>
                 <li>

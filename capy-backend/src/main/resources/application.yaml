@@ -4,3 +4,25 @@ spring:
   threads:
     virtual:
       enabled: true
+  mongodb:
+    uri: ${MONGODB_URI}
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope:
+              - email
+              - profile
+
+demo:
+  llm:
+    enabled: ${DEMO_LLM_ENABLED:false}
+    model: ${DEMO_LLM_MODEL:@cf/meta/llama-3-8b-instruct}
+    systemPrompt: ${DEMO_LLM_SYSTEM_PROMPT:You are a friendly, concise study buddy in Capy, a peer learning app. Reply in 1-2 sentences, be encouraging, and ask a short follow-up question when helpful.}
+    chatterIntervalMs: ${DEMO_LLM_CHATTER_INTERVAL_MS:12000}
+    cloudflare:
+      accountId: ${CLOUDFLARE_ACCOUNT_ID:}
+      apiToken: ${CLOUDFLARE_API_TOKEN:}

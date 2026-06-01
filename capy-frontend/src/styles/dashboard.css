@@ -147,6 +147,57 @@
   width: auto !important;
 }
 
+.demo-controls {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.demo-label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(59, 42, 20, 0.7);
+}
+
+.demo-input {
+  width: 90px;
+  padding: 0.3rem 0.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(122, 92, 58, 0.3);
+  background: #fffaf5;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.demo-status {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(59, 42, 20, 0.7);
+}
+
+.skill-save-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.skill-save-error {
+  color: #d45050;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.skill-save-success {
+  color: #4d9b5d;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
 .loading-animation {
   display: flex;
   align-items: center;

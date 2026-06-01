@@ -4,6 +4,8 @@ import dev.ailuruslabs.capybackend.application.MatchingEngine;
 import dev.ailuruslabs.capybackend.domain.MatchPair;
 import dev.ailuruslabs.capybackend.domain.MatchResult;
 import dev.ailuruslabs.capybackend.domain.UserProfile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -12,6 +14,7 @@ import java.util.concurrent.*;
 @Service
 public class DAAMatchingService implements MatchingEngine {
 
+    private final static Logger logger = LoggerFactory.getLogger(DAAMatchingService.class);
     private double bestScore;
     private Set<MatchPair> bestCombination;
 
@@ -27,6 +30,7 @@ public class DAAMatchingService implements MatchingEngine {
                 future.get(5, TimeUnit.SECONDS);
             } catch (TimeoutException e) {
                 future.cancel(true);
+                logger.atWarn().log("Branch and Bound interrupted after hitting 5-second computation limit.");
             } catch (InterruptedException | ExecutionException e) {
                 Thread.currentThread().interrupt();
             }
