@@ -14,7 +14,9 @@
     "@fontsource/fraunces": "^5.2.9",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.15.1"
+    "react-router-dom": "^7.15.1",
+    "@stomp/stompjs": "^7.1.1",
+    "sockjs-client": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

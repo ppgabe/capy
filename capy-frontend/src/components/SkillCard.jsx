@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import '../styles/skillCard.css'
 
-export default function SkillCard({ title, accentColor, initialSkills }) {
-  const [skills, setSkills] = useState(initialSkills)
+export default function SkillCard({ title, accentColor, skills, onSkillsChange }) {
   const [isInputOpen, setIsInputOpen] = useState(false)
   const [inputValue, setInputValue] = useState('')
 
@@ -10,7 +9,7 @@ export default function SkillCard({ title, accentColor, initialSkills }) {
     const trimmedValue = inputValue.trim()
     if (trimmedValue === '') return
 
-    setSkills([...skills, trimmedValue])
+    onSkillsChange([...skills, trimmedValue])
     setInputValue('')
     setIsInputOpen(false)
   }
@@ -25,7 +24,7 @@ export default function SkillCard({ title, accentColor, initialSkills }) {
   }
 
   const handleRemoveSkill = (index) => {
-    setSkills(skills.filter((_, i) => i !== index))
+    onSkillsChange(skills.filter((_, i) => i !== index))
   }
 
   return (

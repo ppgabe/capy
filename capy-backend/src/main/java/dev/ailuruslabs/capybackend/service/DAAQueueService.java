@@ -13,30 +13,30 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 @RequiredArgsConstructor
 public class DAAQueueService implements QueueService {
-    private final Set<UserProfile> waitingPool = ConcurrentHashMap.newKeySet();
+    private final Map<String, UserProfile> waitingPool = new ConcurrentHashMap<>();
 
     private final ScoringEngine scoringEngine;
     private final MatchingEngine matchingEngine;
     private final SimpMessagingTemplate messagingTemplate;
 
     public void addUserToQueue(UserProfile profile) {
-        waitingPool.add(profile);
+        waitingPool.put(profile.id(), profile);
     }
 
-    public void removeUserFromQueue(UserProfile profile) {
-        waitingPool.remove(profile);
+    public void removeUserFromQueue(String userId) {
+        waitingPool.remove(userId);
     }
 
     @Scheduled(fixedRate = 15000)
     public void processEpoch() {
         List<UserProfile> processingPool = new ArrayList<>();
-        Iterator<UserProfile> iterator = waitingPool.iterator();
+        Iterator<UserProfile> iterator = waitingPool.values().iterator();
 
         // Safely transfer all UserProfiles in the queue
         while (iterator.hasNext()) {
@@ -47,7 +47,9 @@ public class DAAQueueService implements QueueService {
         var scoredUsers = scoringEngine.scorePool(processingPool);
         var matchResult = matchingEngine.calculateMatches(scoredUsers, processingPool);
 
-        waitingPool.addAll(matchResult.unmatchedUsers());
+        for (UserProfile unmatched : matchResult.unmatchedUsers()) {
+            waitingPool.put(unmatched.id(), unmatched);
+        }
 
         for (MatchPair pair : matchResult.optimalMatches()) {
             messagingTemplate.convertAndSend("/queue/match/" + pair.userA().id(), pair);

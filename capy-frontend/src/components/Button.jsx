@@ -18,17 +18,6 @@ export default function Button({ onClick, className = '', children }) {
     boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
   }
 
-  const badgeStyle = {
-    width: '28px',
-    height: '28px',
-    borderRadius: '999px',
-    display: 'grid',
-    placeItems: 'center',
-    border: '1px solid var(--border)',
-    color: 'var(--mudbank)',
-    fontWeight: '700',
-    fontSize: '0.95rem',
-  }
 
   return (
     <button

@@ -24,11 +24,11 @@ class DAAMatchingServiceTest {
     @Test
     void testBranchAndBoundOptimalMatching() {
         // Given
-        UserProfile userA = new UserProfile("A", "UserA", Set.of("Java"), Set.of("Python"));
-        UserProfile userB = new UserProfile("B", "UserB", Set.of("Python"), Set.of("Java"));
-        UserProfile userC = new UserProfile("C", "UserC", Set.of("Java", "JavaScript", "Rust"), Set.of("Design"));
-        UserProfile userD = new UserProfile("D", "UserD", Set.of("Design"), Set.of("Java", "JavaScript", "Rust"));
-        UserProfile userE = new UserProfile("E", "UserE", Set.of("Design"), Set.of("C++"));
+        UserProfile userA = new UserProfile("A", "UserA", "hello", "h",Set.of("Java"), Set.of("Python"));
+        UserProfile userB = new UserProfile("B", "UserB", "hello", "h",Set.of("Python"), Set.of("Java"));
+        UserProfile userC = new UserProfile("C", "UserC", "hello", "h",Set.of("Java", "JavaScript", "Rust"), Set.of("Design"));
+        UserProfile userD = new UserProfile("D", "UserD", "hello", "h",Set.of("Design"), Set.of("Java", "JavaScript", "Rust"));
+        UserProfile userE = new UserProfile("E", "UserE", "hello", "h",Set.of("Design"), Set.of("C++"));
 
         List<UserProfile> allUsers = List.of(userA, userB, userC, userD, userE);
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function DashboardButton({ onClick, className = '', children }) {
+export default function DashboardButton({ onClick, className = '', children, disabled = false }) {
   const [isActive, setIsActive] = useState(false)
   const isGoOnline = children === 'Go Online'
 
@@ -17,7 +17,8 @@ export default function DashboardButton({ onClick, className = '', children }) {
     color: 'var(--text)',
     fontFamily: 'var(--font-body)',
     fontSize: 'var(--text-sm)',
-    cursor: 'pointer',
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    opacity: disabled ? 0.6 : 1,
     transition: 'all 0.25s ease',
     whiteSpace: 'nowrap',
     fontWeight: isGoOnline ? '700' : '400',
@@ -32,6 +33,7 @@ export default function DashboardButton({ onClick, className = '', children }) {
   }
 
   const handleClick = (e) => {
+    if (disabled) return
     if (isGoOnline) {
       setIsActive(!isActive)
     }
@@ -44,12 +46,15 @@ export default function DashboardButton({ onClick, className = '', children }) {
       style={buttonStyle}
       className={className}
       onClick={handleClick}
+      disabled={disabled}
       onMouseEnter={(e) => {
+        if (disabled) return
         e.target.style.background = '#efe7dd'
         e.target.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.08)'
         e.target.style.transform = 'translateY(-1px)'
       }}
       onMouseLeave={(e) => {
+        if (disabled) return
         e.target.style.background = 'var(--riverbank-cream)'
         e.target.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.05)'
         e.target.style.transform = 'translateY(0)'
