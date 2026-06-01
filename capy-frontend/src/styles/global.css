@@ -1,0 +1,172 @@
+/*
+  Capy – Global foundation styles
+  React + CSS only (no Tailwind yet)
+*/
+
+/* ---------------------------- */
+/* CSS Reset (lightweight)      */
+/* ---------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------------------------- */
+/* Design Tokens                */
+/* ---------------------------- */
+:root {
+  /* Brand palette */
+  --capy-sand: #c8a26b;
+  --mudbank: #7a5c3a;
+  --savanna-mist: #e8d5b7;
+  --burrow-brown: #3b2a14;
+  --riverbank-cream: #fff8f0;
+  --wetland-green: #7bae5c;
+  --clay-red: #c46b4a;
+
+  /* Typography */
+  --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial,
+    sans-serif;
+  --font-heading: 'Fraunces', ui-serif, Georgia, 'Times New Roman', Times, serif;
+
+  /* App colors */
+  --bg: #fff8f0;
+  --surface: #ffffff;
+  --text: var(--burrow-brown);
+  --text-muted: #5f4b33;
+  --border: rgba(59, 42, 20, 0.14);
+
+  /* Responsive spacing (8-ish based, with breathing room) */
+  --space-1: clamp(0.5rem, 0.45rem + 0.2vw, 0.75rem);
+  --space-2: clamp(0.75rem, 0.65rem + 0.35vw, 1rem);
+  --space-3: clamp(1rem, 0.9rem + 0.55vw, 1.5rem);
+  --space-4: clamp(1.5rem, 1.25rem + 0.9vw, 2.5rem);
+  --space-5: clamp(2rem, 1.6rem + 1.2vw, 3.25rem);
+
+  /* Type scale */
+  --text-sm: 0.9375rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+  --text-2xl: clamp(2.25rem, 1.8rem + 2.5vw, 3.25rem);
+
+  /* Layout */
+  --container: 72rem;
+  --radius: 14px;
+}
+
+/* ---------------------------- */
+/* Base                          */
+/* ---------------------------- */
+html,
+body,
+#root {
+  height: 100%;
+  scrollbar-gutter: stable;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--riverbank-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mudbank);
+  border-radius: 4px;
+  border: 2px solid var(--riverbank-cream);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b4d2e;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-color: var(--mudbank) var(--riverbank-cream);
+  scrollbar-width: thin;
+}
+
+::selection {
+  background: rgba(200, 162, 107, 0.35);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/* ---------------------------- */
+/* Layout Utilities             */
+/* ---------------------------- */
+.container {
+  width: min(var(--container), calc(100% - (var(--space-3) * 2)));
+  margin-inline: auto;
+}
+
+.stack > * + * {
+  margin-top: var(--space-1);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.section {
+  padding-block: var(--space-5);
+}
