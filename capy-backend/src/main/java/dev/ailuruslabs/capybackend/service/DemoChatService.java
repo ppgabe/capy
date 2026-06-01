@@ -42,27 +42,6 @@ public class DemoChatService {
         sendBotReply(matchId, activeMatch, message.content());
     }
 
-    @Scheduled(fixedRateString = "${demo.llm.chatterIntervalMs:12000}")
-    public void sendPeriodicChatter() {
-        if (!demoLlmClient.isEnabled()) return;
-
-        Instant now = Instant.now();
-        for (Map.Entry<String, ActiveMatch> entry : activeMatches.entrySet()) {
-            ActiveMatch match = entry.getValue();
-
-            if (Duration.between(match.lastActivity, now).compareTo(ACTIVE_WINDOW) > 0) {
-                activeMatches.remove(entry.getKey());
-                continue;
-            }
-
-            if (!match.canSendBotReply()) continue;
-
-            if (random.nextBoolean()) {
-                sendBotReply(entry.getKey(), match, "Say something encouraging and short.");
-            }
-        }
-    }
-
     private Optional<ActiveMatch> resolveMatch(String matchId) {
         ActiveMatch cached = activeMatches.get(matchId);
         if (cached != null) return Optional.of(cached);

@@ -6,6 +6,8 @@ import dev.ailuruslabs.capybackend.application.ScoringEngine;
 import dev.ailuruslabs.capybackend.domain.MatchPair;
 import dev.ailuruslabs.capybackend.domain.UserProfile;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DAAQueueService implements QueueService {
     private final Map<String, UserProfile> waitingPool = new ConcurrentHashMap<>();
 
+    private static final Logger logger = LoggerFactory.getLogger(DAAQueueService.class);
     private final ScoringEngine scoringEngine;
     private final MatchingEngine matchingEngine;
     private final SimpMessagingTemplate messagingTemplate;
@@ -35,6 +38,8 @@ public class DAAQueueService implements QueueService {
 
     @Scheduled(fixedRate = 15000)
     public void processEpoch() {
+        logger.atInfo().log("Processing epoch...");
+
         List<UserProfile> processingPool = new ArrayList<>();
         Iterator<UserProfile> iterator = waitingPool.values().iterator();
 
@@ -43,6 +48,8 @@ public class DAAQueueService implements QueueService {
             processingPool.add(iterator.next());
             iterator.remove();
         }
+
+        logger.atInfo().log("Processing pool has " + processingPool.size() + " users.");
 
         var scoredUsers = scoringEngine.scorePool(processingPool);
         var matchResult = matchingEngine.calculateMatches(scoredUsers, processingPool);
@@ -53,8 +60,19 @@ public class DAAQueueService implements QueueService {
 
         for (MatchPair pair : matchResult.optimalMatches()) {
             messagingTemplate.convertAndSend("/queue/match/" + pair.userA().id(), pair);
-
             messagingTemplate.convertAndSend("/queue/match/" + pair.userB().id(), pair);
+
+            // Re-add demo users so they never run out
+            if (isDemoUser(pair.userA())) {
+                waitingPool.put(pair.userA().id(), pair.userA());
+            }
+            if (isDemoUser(pair.userB())) {
+                waitingPool.put(pair.userB().id(), pair.userB());
+            }
         }
+    }
+
+    private boolean isDemoUser(UserProfile profile) {
+        return profile.email() != null && profile.email().endsWith("@demo.capy.local");
     }
 }
