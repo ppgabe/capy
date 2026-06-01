@@ -22,6 +22,11 @@
   gap: 0.6rem;
   padding-inline: 0.25rem;
   text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.brand:hover {
+  transform: scale(1.05);
 }
 
 .nav-links-container {
@@ -31,6 +36,12 @@
   border: 1px solid var(--border);
   border-radius: 100px;
   background: var(--savanna-mist);
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.nav-links-container:hover {
+  box-shadow: 0 4px 16px rgba(212, 175, 138, 0.12);
+  border-color: #d4af8a;
 }
 
 .brand__icon {
@@ -39,12 +50,18 @@
   border-radius: 50%;
   border: 2px solid var(--mudbank);
   object-fit: cover;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.brand:hover .brand__icon {
+  box-shadow: 0 4px 12px rgba(122, 92, 58, 0.2);
 }
 
 .brand__text {
   font-family: var(--font-heading);
   letter-spacing: -0.01em;
   font-size: 1.35rem;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
 .nav {
@@ -64,26 +81,66 @@
 .nav__link {
   font-size: var(--text-sm);
   color: var(--burrow-brown);
-  padding: 0.5rem 0.7rem;
-  border-radius: 999px;
-  transition: all 0.25s ease;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
   text-decoration: none;
+  position: relative;
+  font-weight: 500;
 }
 
-.nav__link:hover,
-.nav__link:focus-visible {
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #c8a26b, #d4af8a);
+  transform: translateX(-50%);
+  transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
+  border-radius: 2px;
+}
+
+.nav__link:hover {
   color: var(--burrow-brown);
   background: var(--riverbank-cream);
-  padding: 0.3rem 0.7rem;
+  transform: translateY(-2px);
+}
+
+.nav__link:hover::after {
+  width: 70%;
+}
+
+.nav__link:focus-visible {
+  outline: 2px solid #c8a26b;
+  outline-offset: 2px;
 }
 
 .nav__link--active {
   background: var(--riverbank-cream);
   color: var(--burrow-brown);
+  box-shadow: 0 2px 8px rgba(212, 175, 138, 0.1);
+}
+
+.nav__link--active::after {
+  width: 70%;
+}
+
+@keyframes pageTransitionIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .landing {
   padding-bottom: var(--space-5);
+  animation: pageTransitionIn 0.5s cubic-bezier(0.2, 0, 0, 1) forwards;
 }
 
 .container {
